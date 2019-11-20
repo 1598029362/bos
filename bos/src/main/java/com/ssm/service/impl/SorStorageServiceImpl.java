@@ -13,6 +13,11 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     private SorStorageMapper mapper;
 
     @Override
+    public int finAllSorStorageSize() {
+        return mapper.finAllSorStorageSize();
+    }
+
+    @Override
     public List<SorStorage> findAllSorStorage() {
         return mapper.findAllSorStorage();
     }

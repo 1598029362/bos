@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface SorStorageService {
+    int finAllSorStorageSize();
 
     List<SorStorage> findAllSorStorage();
 

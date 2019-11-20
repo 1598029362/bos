@@ -18,7 +18,7 @@ public class SorStorageController {
     public Map<Object,Object> findAllSorStorage()
     {
         Map<Object,Object> map=new HashMap<>();
-        map.put("total",service.findAllSorStorage().size());
+        map.put("total",service.finAllSorStorageSize());
         map.put("rows",service.findAllSorStorage());
       return map;
     }

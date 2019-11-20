@@ -11,6 +11,8 @@ import java.util.List;
 
 @Service
 public interface SorStorageMapper {
+    @Select("select count(*) from SOR_Storage")
+    int finAllSorStorageSize();
     @Select("select * from SOR_Storage")
     List<SorStorage> findAllSorStorage();
 
