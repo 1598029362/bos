@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SyUnits {
@@ -11,6 +14,8 @@ public class SyUnits {
 
     private Short operatorid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date operationtime;
 
     public Short getId() {
@@ -45,10 +50,11 @@ public class SyUnits {
         this.operatorid = operatorid;
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getOperationtime() {
         return operationtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setOperationtime(Date operationtime) {
         this.operationtime = operationtime;
     }
