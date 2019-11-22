@@ -16,6 +16,7 @@ import java.util.List;
 public class FuzhuaddSorStorageController {
 
    @Autowired
+
     private SY_EmpService1 empService;
    @Autowired
    private SyUnitsService1 unitsService;
