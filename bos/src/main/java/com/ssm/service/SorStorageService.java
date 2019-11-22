@@ -9,11 +9,12 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface SorStorageService {
+    int finAllSorStorageSize();
 
     List<SorStorage> findAllSorStorage();
 
 
-    int deleteByPrimaryKey(Short id);
+    int deleteByPrimaryKey(long id);
 
     int insert(SorStorage record);
 

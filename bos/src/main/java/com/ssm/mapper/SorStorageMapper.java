@@ -11,11 +11,13 @@ import java.util.List;
 
 @Service
 public interface SorStorageMapper {
+    @Select("select count(*) from SOR_Storage")
+    int finAllSorStorageSize();
     @Select("select * from SOR_Storage")
     List<SorStorage> findAllSorStorage();
 
     @Delete("delete from SOR_Storage where ID=#{id}")
-    int deleteByPrimaryKey(Short id);
+    int deleteByPrimaryKey(long id);
 
     @Insert("insert into SOR_Storage values(#{id},#{acceptdate},#{acceptperson},#{acceptcompany},#{deliveryperson},#{deliverycompany})")
     int insert(SorStorage record);

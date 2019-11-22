@@ -1,7 +1,7 @@
 package com.ssm.model;
 
 public class SorStoragedetails {
-    private Short id;
+    private Integer id;
 
     private String packageid;
 
@@ -9,13 +9,24 @@ public class SorStoragedetails {
 
     private String outboundid;
 
+    @Override
+    public String toString() {
+        return "SorStoragedetails{" +
+                "id=" + id +
+                ", packageid='" + packageid + '\'' +
+                ", weight=" + weight +
+                ", outboundid='" + outboundid + '\'' +
+                ", state=" + state +
+                '}';
+    }
+
     private Short state;
 
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

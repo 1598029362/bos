@@ -1,27 +1,120 @@
 package com.ssm.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.ssm.model.SY_Emp;
 import com.ssm.model.SorStorage;
+import com.ssm.model.SorStoragedetails;
+import com.ssm.service.BasZoneinfoService1;
+import com.ssm.service.SY_EmpService1;
 import com.ssm.service.SorStorageService;
+import com.ssm.service.SorStoragedetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
+@ResponseBody
 @Controller
 public class SorStorageController {
     @Autowired
     private SorStorageService service;
+    @Autowired
+    private SorStoragedetailsService sorStoragedetailsService;
+    @Autowired
+    private SY_EmpService1 empService;
+
 
     @RequestMapping("findAllSorStorage")
     public Map<Object,Object> findAllSorStorage()
     {
+      List<SorStorage> list= service.findAllSorStorage();
+     List<SY_Emp> empList=empService.emplist();
+        for (SorStorage s : list) {
+            for (SY_Emp emp : empList) {
+               if (s.getAcceptperson()==emp.getID())
+               {
+                   s.setEmp1(emp.getEmpName());
+               }
+               if (s.getDeliveryperson()==emp.getID())
+               {
+                    s.setEmp2(emp.getEmpName());
+               }
+
+            }
+        }
+
+        System.out.println("进来了");
         Map<Object,Object> map=new HashMap<>();
-        map.put("total",service.findAllSorStorage().size());
-        map.put("rows",service.findAllSorStorage());
+        map.put("total",service.finAllSorStorageSize());
+        map.put("rows",list);
       return map;
     }
 
+    @RequestMapping("selectSorStoragedetailsById")
+    public List<SorStoragedetails> selectSorStoragedetailsById(SorStorage storage)
+    {
+        System.out.println("进来了selectSorStoragedetailsById");
+        List<SorStoragedetails> list=new ArrayList<>();
+        list=sorStoragedetailsService.selectSorStoragedetailsById("HB"+storage.getId());
+        return list;
+    }
+
+
+    @RequestMapping("deleteSorStorage")
+    public String deleteSorStorage(long id)
+    {
+        System.out.println(id);
+        System.out.println("jinlaildelete");
+        service.deleteByPrimaryKey(id);
+        sorStoragedetailsService.deleteByLike("HB"+id);
+        return "";
+    }
+
+    @RequestMapping("insertSorStorage")
+    public String insertSorStorage(SorStorage storage)
+    {
+
+        System.out.println("insert");
+        System.out.println(storage.toString());
+        long id=new Date().getTime();
+        storage.setId(id);
+        System.out.println(storage.getAcceptdate());
+        // storage.setAcceptdate(new Date(time));
+        service.insert(storage);
+        List<SorStoragedetails> list = new ArrayList<SorStoragedetails>();
+// contantUser 需要转的字符串，DoVendorContantEntity.class 需要转换成的实体类对象
+        list =  JSONObject.parseArray(storage.getList(), SorStoragedetails.class);
+        for (SorStoragedetails storagedetails : list) {
+            storagedetails.setPackageid("HB"+id);
+            storagedetails.setOutboundid("CK"+id);
+            sorStoragedetailsService.insert(storagedetails);
+        }
+        //service.insert(storage);
+        return "";
+    }
+
+    @RequestMapping("updateSorStorage")
+    public String updateSorStorage(SorStorage storage)
+    {
+       // service.updateByPrimaryKeySelective(storage);
+        System.out.println("updateSorStorage");
+
+        System.out.println(storage);
+
+        service.updateByPrimaryKeySelective(storage);
+        List<SorStoragedetails> list = new ArrayList<SorStoragedetails>();
+// contantUser 需要转的字符串，DoVendorContantEntity.class 需要转换成的实体类对象
+        list =  JSONObject.parseArray(storage.getList(), SorStoragedetails.class);
+        for (SorStoragedetails storagedetails : list) {
+            sorStoragedetailsService.update(storagedetails);
+        }
+        //service.insert(storage);
+        return "";
+
+    }
 
 }
