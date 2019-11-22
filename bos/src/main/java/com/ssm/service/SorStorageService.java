@@ -14,7 +14,7 @@ public interface SorStorageService {
     List<SorStorage> findAllSorStorage();
 
 
-    int deleteByPrimaryKey(Short id);
+    int deleteByPrimaryKey(long id);
 
     int insert(SorStorage record);
 

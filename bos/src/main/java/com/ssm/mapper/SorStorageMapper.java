@@ -17,7 +17,7 @@ public interface SorStorageMapper {
     List<SorStorage> findAllSorStorage();
 
     @Delete("delete from SOR_Storage where ID=#{id}")
-    int deleteByPrimaryKey(Short id);
+    int deleteByPrimaryKey(long id);
 
     @Insert("insert into SOR_Storage values(#{id},#{acceptdate},#{acceptperson},#{acceptcompany},#{deliveryperson},#{deliverycompany})")
     int insert(SorStorage record);

@@ -23,7 +23,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public int deleteByPrimaryKey(Short id) {
+    public int deleteByPrimaryKey(long id) {
         return mapper.deleteByPrimaryKey(id);
     }
 
@@ -39,6 +39,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
 
     @Override
     public int updateByPrimaryKeySelective(SorStorage record) {
+        System.out.println(record);
         return mapper.updateByPrimaryKeySelective(record);
     }
 }
