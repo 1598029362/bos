@@ -37,7 +37,7 @@ public class SorStorage {
         this.list = list;
     }
 
-    private long id;
+    private Long id;
 
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
@@ -51,11 +51,11 @@ public class SorStorage {
 
     private String deliverycompany;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
