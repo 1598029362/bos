@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SyMenus {
     private Short id;
 
@@ -12,6 +15,27 @@ public class SyMenus {
     private String url;
 
     private String tip;
+
+    private List<SyRole> menus_role;
+
+    public List<SyRole> getMenus_role() {
+        return menus_role;
+    }
+
+    private List<SyMenus> children=new ArrayList<>();//保存根节点对应的子节点的集合
+
+
+    public List<SyMenus> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SyMenus> children) {
+        this.children = children;
+    }
+
+    public void setMenus_role(List<SyRole> menus_role) {
+        this.menus_role = menus_role;
+    }
 
     public Short getId() {
         return id;
@@ -59,5 +83,19 @@ public class SyMenus {
 
     public void setTip(String tip) {
         this.tip = tip == null ? null : tip.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "SyMenus{" +
+                "id=" + id +
+                ", parentid='" + parentid + '\'' +
+                ", type='" + type + '\'' +
+                ", text='" + text + '\'' +
+                ", url='" + url + '\'' +
+                ", tip='" + tip + '\'' +
+                ", menus_role=" + menus_role +
+                ", children=" + children +
+                '}';
     }
 }
