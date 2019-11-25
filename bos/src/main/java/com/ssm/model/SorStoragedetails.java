@@ -1,6 +1,16 @@
 package com.ssm.model;
 
 public class SorStoragedetails {
+    private  String states;
+
+    public String getStates() {
+        return states;
+    }
+
+    public void setStates(String states) {
+        this.states = states;
+    }
+
     private Integer id;
 
     private String packageid;

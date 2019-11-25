@@ -60,6 +60,24 @@ public class SorStorageController {
         System.out.println("进来了selectSorStoragedetailsById");
         List<SorStoragedetails> list=new ArrayList<>();
         list=sorStoragedetailsService.selectSorStoragedetailsById("HB"+storage.getId());
+        for (SorStoragedetails storagedetails : list) {
+            if (storagedetails.getState()==1)
+            {
+               storagedetails.setStates("中转入库");
+            }
+            else  if (storagedetails.getState()==2)
+            {
+                storagedetails.setStates("二次入库");
+            }
+            else  if (storagedetails.getState()==3)
+            {
+                storagedetails.setStates("初始入库");
+            }
+           else if (storagedetails.getState()==4)
+            {
+                storagedetails.setStates("有货无单");
+            }
+        }
         return list;
     }
 
@@ -81,8 +99,9 @@ public class SorStorageController {
         System.out.println("insert");
         System.out.println(storage.toString());
         long id=new Date().getTime();
+        System.out.println(id);
         storage.setId(id);
-        System.out.println(storage.getAcceptdate());
+
         // storage.setAcceptdate(new Date(time));
         service.insert(storage);
         List<SorStoragedetails> list = new ArrayList<SorStoragedetails>();
