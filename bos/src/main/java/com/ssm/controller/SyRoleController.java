@@ -6,7 +6,6 @@ package com.ssm.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.ssm.model.SyMenus;
 import com.ssm.model.SyRole;
-import com.ssm.model.SyRolesMenus;
 import com.ssm.service.SyRoleService;
 import com.ssm.service.SyRolesMenusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +30,8 @@ public class SyRoleController {
     @RequestMapping("selectRolesMenusLike")
     public List<Short> selectRolesMenusLike(int id){
         List<Short> list=new ArrayList<>();
-        List<SyRolesMenus> menus = syRolesMenusService.selectByPrimaryKeyLike(id);
-        for (SyRolesMenus menu : menus) {
+        List<SorStorageController.SyRolesMenus> menus = syRolesMenusService.selectByPrimaryKeyLike(id);
+        for (SorStorageController.SyRolesMenus menu : menus) {
 
             list.add(menu.getMenuid());
         }
@@ -54,7 +53,7 @@ public class SyRoleController {
     @RequestMapping("updateRole")
     public void updateRole(SyRole syRole){
         syRoleService.updateByPrimaryKey(syRole);
-        for (SyRolesMenus menus : syRolesMenusService.selectByPrimaryKeyLike(syRole.getId())) {
+        for (SorStorageController.SyRolesMenus menus : syRolesMenusService.selectByPrimaryKeyLike(syRole.getId())) {
             syRolesMenusService.deleteByPrimaryKey(syRole.getId());
         }
 
@@ -62,7 +61,7 @@ public class SyRoleController {
         List<SyMenus> list = JSONObject.parseArray(syRole.getRole_menus(),SyMenus.class);
         for (SyMenus menus : list) {
             for (SyMenus syMenus : menus.getChildren()) {
-                SyRolesMenus rolesMenus=new SyRolesMenus(syRole.getId(),syMenus.getId());
+                SorStorageController.SyRolesMenus rolesMenus=new SorStorageController.SyRolesMenus(syRole.getId(),syMenus.getId());
                 syRolesMenusService.insert2(rolesMenus);
             }
         }
@@ -82,7 +81,7 @@ public class SyRoleController {
         for (SyMenus menus : list) {
             if(Integer.parseInt(menus.getParentid())!=-1)
             {
-                SyRolesMenus rolesMenus=new SyRolesMenus(menus.getId());
+                SorStorageController.SyRolesMenus rolesMenus=new SorStorageController.SyRolesMenus(menus.getId());
                 syRolesMenusService.insert(rolesMenus);
             }
 

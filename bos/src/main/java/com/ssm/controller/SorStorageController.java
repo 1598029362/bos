@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.ssm.model.SY_Emp;
 import com.ssm.model.SorStorage;
 import com.ssm.model.SorStoragedetails;
-import com.ssm.service.BasZoneinfoService1;
 import com.ssm.service.SY_EmpService1;
 import com.ssm.service.SorStorageService;
 import com.ssm.service.SorStoragedetailsService;
@@ -13,8 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @ResponseBody
@@ -136,4 +133,47 @@ public class SorStorageController {
 
     }
 
+    public static class SyRolesMenus {
+        private Short id;
+
+        private Short roleid;
+
+        private Short menuid;
+
+        public SyRolesMenus() {
+        }
+
+        public SyRolesMenus( Short menuid) {
+            this.menuid = menuid;
+        }
+
+        public SyRolesMenus(Short roleid, Short menuid) {
+            this.roleid = roleid;
+            this.menuid = menuid;
+        }
+
+        public Short getId() {
+            return id;
+        }
+
+        public void setId(Short id) {
+            this.id = id;
+        }
+
+        public Short getRoleid() {
+            return roleid;
+        }
+
+        public void setRoleid(Short roleid) {
+            this.roleid = roleid;
+        }
+
+        public Short getMenuid() {
+            return menuid;
+        }
+
+        public void setMenuid(Short menuid) {
+            this.menuid = menuid;
+        }
+    }
 }
