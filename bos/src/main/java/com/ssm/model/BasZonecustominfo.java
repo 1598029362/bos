@@ -57,6 +57,9 @@ public class BasZonecustominfo {
         return zoneinfoid;
     }
 
+    public BasZonecustominfo() {
+    }
+
     public void setZoneinfoid(Short zoneinfoid) {
         this.zoneinfoid = zoneinfoid;
     }
