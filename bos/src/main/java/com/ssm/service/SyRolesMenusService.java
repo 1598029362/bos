@@ -1,15 +1,15 @@
 package com.ssm.service;
 
-import com.ssm.model.SyRolesMenus;
+import com.ssm.controller.SorStorageController;
 
 import java.util.List;
 
 public interface SyRolesMenusService {
     int deleteByPrimaryKey(Short roleid);
 
-    int insert(SyRolesMenus record);
+    int insert(SorStorageController.SyRolesMenus record);
 
-    int insert2(SyRolesMenus record);
+    int insert2(SorStorageController.SyRolesMenus record);
 
-    List<SyRolesMenus> selectByPrimaryKeyLike(int roleid);
+    List<SorStorageController.SyRolesMenus> selectByPrimaryKeyLike(int roleid);
 }

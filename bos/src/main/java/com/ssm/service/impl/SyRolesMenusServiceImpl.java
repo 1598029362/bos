@@ -1,7 +1,7 @@
 package com.ssm.service.impl;
 
+import com.ssm.controller.SorStorageController;
 import com.ssm.mapper.SyRolesMenusMapper;
-import com.ssm.model.SyRolesMenus;
 import com.ssm.service.SyRolesMenusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,17 +19,17 @@ public class SyRolesMenusServiceImpl implements SyRolesMenusService {
     }
 
     @Override
-    public int insert(SyRolesMenus record) {
+    public int insert(SorStorageController.SyRolesMenus record) {
         return syRolesMenusMapper.insert(record);
     }
 
     @Override
-    public int insert2(SyRolesMenus record) {
+    public int insert2(SorStorageController.SyRolesMenus record) {
         return syRolesMenusMapper.insert2(record);
     }
 
     @Override
-    public List<SyRolesMenus> selectByPrimaryKeyLike(int roleid) {
+    public List<SorStorageController.SyRolesMenus> selectByPrimaryKeyLike(int roleid) {
         return syRolesMenusMapper.selectByPrimaryKeyLike(roleid);
     }
 }
