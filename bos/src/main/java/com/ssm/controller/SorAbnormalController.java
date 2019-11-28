@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public class SorAbnormalController {
     {
         Map<Object,Object> map=new HashMap<>();
         map.put("list",sorAbnormalService.findAllSOR_Abnormal());
+
         return map;
     }
 
@@ -33,6 +35,7 @@ public class SorAbnormalController {
     @RequestMapping("updateSorAbnormal")
     public  String updateSorAbnormal(SorAbnormal sorAbnormal)
     {
+        sorAbnormal.setHandledate(new Date());
         sorAbnormalService.updateByPrimaryKey(sorAbnormal);
         return "";
     }
@@ -40,6 +43,8 @@ public class SorAbnormalController {
     @RequestMapping("insertSorAbnormal")
     public String insertSorAbnormal(SorAbnormal sorAbnormal)
     {
+        System.out.println(sorAbnormal);
+        sorAbnormal.setHandledate(new Date());
         sorAbnormalService.insert(sorAbnormal);
         return "";
     }

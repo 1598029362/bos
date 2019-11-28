@@ -5,6 +5,7 @@ import com.ssm.model.SorStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,5 +42,15 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     public int updateByPrimaryKeySelective(SorStorage record) {
         System.out.println(record);
         return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public List<SorStorage> selectByPrimaryKeyLike(int start, int end, long id, Date acceptdate) {
+        return mapper.selectByPrimaryKeyLike(start,end,id,acceptdate);
+    }
+
+    @Override
+    public int selectCount(Long id, Date acceptdate) {
+        return mapper.selectCount(id,acceptdate);
     }
 }

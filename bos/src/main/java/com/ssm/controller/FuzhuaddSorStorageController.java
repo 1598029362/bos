@@ -25,13 +25,17 @@ public class FuzhuaddSorStorageController {
    @RequestMapping("findAllSyUnits")
    public List<SyUnits> findAllSyUnits()
    {
-     List<SyUnits> list = unitsService.findAllSyUnits();
+       System.out.println("findAllSyUnits");
+       List<SyUnits> list = unitsService.findAllSyUnits();
+
        return list;
    }
    @RequestMapping("findAllSY_Emp")
    public List<SY_Emp> findAllSY_Emp()
    {
+       System.out.println("findAllSY_Emp");
        List<SY_Emp> list2=  empService.emplist();
+
        return  list2;
    }
 

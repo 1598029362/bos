@@ -26,13 +26,18 @@ public class SorStorageController {
     private SorStoragedetailsService sorStoragedetailsService;
     @Autowired
     private SY_EmpService1 empService;
-
+    private  Integer page=1;
+    private  Integer rows=4;
 
     @RequestMapping("findAllSorStorage")
     public Map<Object,Object> findAllSorStorage()
     {
-      List<SorStorage> list= service.findAllSorStorage();
-     List<SY_Emp> empList=empService.emplist();
+
+
+        //(page-1)* rows          page*rows;
+        Map<Object,Object> map=new HashMap<>();
+        List<SorStorage> list= service.findAllSorStorage();
+            List<SY_Emp> empList=empService.emplist();
         for (SorStorage s : list) {
             for (SY_Emp emp : empList) {
                if (s.getAcceptperson()==emp.getID())
@@ -48,10 +53,58 @@ public class SorStorageController {
         }
 
         System.out.println("进来了");
-        Map<Object,Object> map=new HashMap<>();
+
         map.put("total",service.finAllSorStorageSize());
         map.put("rows",list);
-      return map;
+
+        return map;
+    }
+
+    @RequestMapping("findAllByLikeSorStorage")
+    public Map<Object,Object> findAllByLikeSorStorage(SorStorage storage,Integer page,Integer rows)
+    {
+        if(storage.getId()==null)
+        {
+            storage.setId(1L);
+        }
+        if (storage.getAcceptdate()==null)
+        {
+          storage.setAcceptdate(new Date());
+        }
+        if(page==null)
+        {
+            page=1;
+        }
+        if(rows==null)
+        {
+            rows=4;
+        }
+        System.out.println(storage.getId()+"\t"+storage.getAcceptdate()+"\t"+page+"\t"+rows);
+        List<SorStorage> list=service.selectByPrimaryKeyLike((page-1)* rows,page*rows,storage.getId(),storage.getAcceptdate());
+        Map<Object,Object> map =new HashMap<>();
+
+        List<SY_Emp> empList=empService.emplist();
+        for (SorStorage s : list) {
+            System.out.println(s);
+            for (SY_Emp emp : empList) {
+                if (s.getAcceptperson()==emp.getID())
+                {
+                    s.setEmp1(emp.getEmpName());
+                }
+                if (s.getDeliveryperson()==emp.getID())
+                {
+                    s.setEmp2(emp.getEmpName());
+                }
+
+            }
+        }
+
+        System.out.println("进来了");
+
+        map.put("total",service.finAllSorStorageSize());
+        map.put("rows",list);
+
+        return map;
     }
 
     @RequestMapping("selectSorStoragedetailsById")
