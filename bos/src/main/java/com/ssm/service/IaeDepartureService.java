@@ -1,4 +1,4 @@
-package com.ssm.mapper;
+package com.ssm.service;
 
 import com.ssm.model.IaeDeparture;
 import org.apache.ibatis.annotations.Select;
@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public interface IaeDepartureMapper {
-    @Select("select * from  IAE_Departure")
+
+public interface IaeDepartureService {
+
     List<IaeDeparture> finAllIaeDeparture();
 
     int deleteByPrimaryKey(String id);

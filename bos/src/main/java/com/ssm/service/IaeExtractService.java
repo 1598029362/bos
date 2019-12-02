@@ -1,4 +1,4 @@
-package com.ssm.mapper;
+package com.ssm.service;
 
 import com.ssm.model.IaeExtract;
 import org.apache.ibatis.annotations.Select;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public interface IaeExtractMapper {
 
-    @Select("select * from IAE_Extract")
+public interface IaeExtractService {
+
+
     List<IaeExtract> finAllIaeExtract();
 
     int deleteByPrimaryKey(String id);
