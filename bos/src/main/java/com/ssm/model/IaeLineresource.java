@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class IaeLineresource {
@@ -15,11 +18,15 @@ public class IaeLineresource {
 
     private String capacity;
 
-    private Short waybillid;
+    private String waybillid;
 
     private String carrier;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date expectarrivaldate;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date expectdeparturedate;
 
@@ -32,16 +39,22 @@ public class IaeLineresource {
     private Short volume;
 
     private String handleperson;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date handledate;
 
     private Short enterperson;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date enterdate;
 
     private String entercompany;
 
     private Short acceptperson;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date acceptdate;
 
@@ -58,6 +71,8 @@ public class IaeLineresource {
     private String warename;
 
     private Short actualvolume;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date timelimit;
 
@@ -74,6 +89,8 @@ public class IaeLineresource {
     private Short deliverytype;
 
     private String importanthints;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date surplustime;
 
@@ -125,11 +142,11 @@ public class IaeLineresource {
         this.capacity = capacity == null ? null : capacity.trim();
     }
 
-    public Short getWaybillid() {
+    public String getWaybillid() {
         return waybillid;
     }
 
-    public void setWaybillid(Short waybillid) {
+    public void setWaybillid(String waybillid) {
         this.waybillid = waybillid;
     }
 

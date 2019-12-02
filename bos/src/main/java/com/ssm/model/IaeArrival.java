@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class IaeArrival {
@@ -10,18 +13,23 @@ public class IaeArrival {
     private String cargoaddress;
 
     private String issueperson;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date issuedate;
 
     private String workaddress;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date storagedate;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date outbounddate;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date timelimit;
-
-    private Short batch;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date batch;
 
     public String getId() {
         return id;
@@ -95,11 +103,11 @@ public class IaeArrival {
         this.timelimit = timelimit;
     }
 
-    public Short getBatch() {
+    public Date getBatch() {
         return batch;
     }
 
-    public void setBatch(Short batch) {
+    public void setBatch(Date batch) {
         this.batch = batch;
     }
 }

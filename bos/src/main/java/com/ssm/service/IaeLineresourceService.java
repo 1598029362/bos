@@ -1,13 +1,14 @@
-package com.ssm.mapper;
+package com.ssm.service;
 
 import com.ssm.model.IaeLineresource;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
-public interface IaeLineresourceMapper {
-    @Select("select * from IAE_LineResource")
+
+
+public interface IaeLineresourceService {
+
     List<IaeLineresource> finAllIaeLineresource();
 
     int deleteByPrimaryKey(String id);

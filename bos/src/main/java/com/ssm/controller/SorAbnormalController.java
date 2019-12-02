@@ -17,12 +17,11 @@ public class SorAbnormalController {
     private SorAbnormalService sorAbnormalService;
 
     @RequestMapping("findAllSorAbnormal")
-    public Map<Object,Object> findAllSorAbnormal()
+    public List<SorAbnormal> findAllSorAbnormal()
     {
-        Map<Object,Object> map=new HashMap<>();
-        map.put("list",sorAbnormalService.findAllSOR_Abnormal());
 
-        return map;
+
+        return sorAbnormalService.findAllSOR_Abnormal();
     }
 
     @RequestMapping("deleteSorAbnormal")
