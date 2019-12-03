@@ -14,19 +14,19 @@ public interface SorStoragedetailsMapper {
     @Select("select * from SOR_StorageDetails")
     List<SorStoragedetails> findAllSorStoragedetails();
 
-    @Delete("delete from SOR_StorageDetails where id=#{id}")
-    int deleteByPrimaryKey(Integer id);
+    @Delete("delete from SOR_StorageDetails where contractnumber=#{contractnumber}")
+    int deleteByPrimaryKey(Integer contractnumber);
 
     @Delete("delete from SOR_StorageDetails where packageid=#{packageid}")
     int deleteByLike(String packageid);
 
-    @Insert("insert into SOR_StorageDetails values(SOR_StorageDetails_id.nextval,#{packageid},#{weight},#{outboundid},#{state})")
+    @Insert("insert into SOR_StorageDetails values(#{id},#{packageid},#{weight},#{outboundid},#{state},#{contractnumber})")
     int insert(SorStoragedetails record);
 
-    @Select("select * from SOR_StorageDetails where packageid=#{packageid}")
-    List<SorStoragedetails> selectSorStoragedetailsById(String packageid);
+    @Select("select * from SOR_StorageDetails where contractnumber=#{contractnumber}")
+    List<SorStoragedetails> selectSorStoragedetailsById(Integer contractnumber);
 
-    @Update("update SOR_StorageDetails set packageid=#{packageid},weight=#{weight},outboundid=#{outboundid},state=#{state} where id=#{id}")
+    @Update("update SOR_StorageDetails set packageid=#{packageid},weight=#{weight},outboundid=#{outboundid},state=#{state} where contractnumber=#{contractnumber}")
     int update(SorStoragedetails record);
 
 

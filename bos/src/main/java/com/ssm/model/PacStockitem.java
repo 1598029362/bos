@@ -21,6 +21,38 @@ public class PacStockitem {
 
     private Short status;
 
+    @Override
+    public String toString() {
+        return "PacStockitem{" +
+                "id=" + id +
+                ", warehouseno='" + warehouseno + '\'' +
+                ", goodscode='" + goodscode + '\'' +
+                ", goodsname='" + goodsname + '\'' +
+                ", storagenum=" + storagenum +
+                ", actualnum=" + actualnum +
+                ", plannedprice=" + plannedprice +
+                ", specifications='" + specifications + '\'' +
+                ", type=" + type +
+                ", status=" + status +
+                '}';
+    }
+
+    public PacStockitem() {
+    }
+
+    public PacStockitem(Short id, String warehouseno, String goodscode, String goodsname, Short storagenum, Short actualnum, Short plannedprice, String specifications, Short type, Short status) {
+        this.id = id;
+        this.warehouseno = warehouseno;
+        this.goodscode = goodscode;
+        this.goodsname = goodsname;
+        this.storagenum = storagenum;
+        this.actualnum = actualnum;
+        this.plannedprice = plannedprice;
+        this.specifications = specifications;
+        this.type = type;
+        this.status = status;
+    }
+
     public Short getId() {
         return id;
     }

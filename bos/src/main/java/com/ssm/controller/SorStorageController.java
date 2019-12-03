@@ -1,14 +1,11 @@
 package com.ssm.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ssm.model.SY_Emp;
-import com.ssm.model.SorStorage;
-import com.ssm.model.SorStoragedetails;
-import com.ssm.service.SY_EmpService1;
-import com.ssm.service.SorStorageService;
-import com.ssm.service.SorStoragedetailsService;
+import com.ssm.model.*;
+import com.ssm.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,6 +23,14 @@ public class SorStorageController {
     private  Integer page=1;
     private  Integer rows=4;
 
+    @Autowired
+    private AccBusinessadmissibilityService11 accBusinessadmissibilityService;
+    @Autowired
+    private AccWorkorderService11 accWorkorderService;
+    @Autowired
+      private      PacStockService11 pacStockService;
+     @Autowired
+     private  PacStockitemService11 pacStockitemService;
     @RequestMapping("findAllSorStorage")
     public Map<Object,Object> findAllSorStorage()
     {
@@ -62,7 +67,7 @@ public class SorStorageController {
     {
         if(storage.getId()==null)
         {
-            storage.setId(1L);
+            storage.setId(1);
         }
         if (storage.getAcceptdate()==null)
         {
@@ -104,12 +109,15 @@ public class SorStorageController {
         return map;
     }
 
+
     @RequestMapping("selectSorStoragedetailsById")
     public List<SorStoragedetails> selectSorStoragedetailsById(SorStorage storage)
     {
         System.out.println("进来了selectSorStoragedetailsById");
         List<SorStoragedetails> list=new ArrayList<>();
-        list=sorStoragedetailsService.selectSorStoragedetailsById("HB"+storage.getId());
+        System.out.println(storage.getId());
+
+        list=sorStoragedetailsService.selectSorStoragedetailsById(storage.getId());
         for (SorStoragedetails storagedetails : list) {
             if (storagedetails.getState()==1)
             {
@@ -133,12 +141,12 @@ public class SorStorageController {
 
 
     @RequestMapping("deleteSorStorage")
-    public String deleteSorStorage(long id)
+    public String deleteSorStorage(Integer id)
     {
         System.out.println(id);
         System.out.println("jinlaildelete");
         service.deleteByPrimaryKey(id);
-        sorStoragedetailsService.deleteByLike("HB"+id);
+        sorStoragedetailsService.deleteByPrimaryKey(id);
         return "";
     }
 
@@ -149,8 +157,8 @@ public class SorStorageController {
         System.out.println("insert");
         System.out.println(storage.toString());
         long id=new Date().getTime();
-        System.out.println(id);
-        storage.setId(id);
+
+        storage.setId(-(int)id);
 
         // storage.setAcceptdate(new Date(time));
         service.insert(storage);
@@ -158,9 +166,20 @@ public class SorStorageController {
 // contantUser 需要转的字符串，DoVendorContantEntity.class 需要转换成的实体类对象
         list =  JSONObject.parseArray(storage.getList(), SorStoragedetails.class);
         for (SorStoragedetails storagedetails : list) {
+            if(storagedetails.getId()!=null){
             storagedetails.setPackageid("HB"+id);
             storagedetails.setOutboundid("CK"+id);
-            sorStoragedetailsService.insert(storagedetails);
+            AccBusinessadmissibility aa= accBusinessadmissibilityService.selectByPrimaryKey(storagedetails.getId());
+             storagedetails.setWeight(aa.getWeight());
+             storagedetails.setContractnumber(-(int)id);
+             sorStoragedetailsService.insert(storagedetails);
+             AccBusinessadmissibility acc= accBusinessadmissibilityService.selectByPrimaryKey(storagedetails.getId());
+                AccWorkorder accWorkorder= accWorkorderService.selectByPrimaryKey(acc.getBusinessnoticeno());
+
+
+              pacStockService.insert(new PacStock(null,acc.getBusinessnoticeno(),3,new Date().getTime()+"",acc.getCustomcode(),acc.getProcessingunit(),acc.getCustomname(),accWorkorder.getWorkgenerationtime(),"备注"));
+               pacStockitemService.insert(new PacStockitem(null,acc.getBusinessnoticeno(),"YB20191000",acc.getProduct(),acc.getPackagesnum(),acc.getPackagesnum(),(Short) acc.getWeight(),acc.getSingletype(),acc.getBillingweight(),storagedetails.getState()));
+            }
         }
         //service.insert(storage);
         return "";

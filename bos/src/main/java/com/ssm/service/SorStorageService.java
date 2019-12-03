@@ -15,21 +15,21 @@ public interface SorStorageService {
     List<SorStorage> findAllSorStorage();
 
 
-    int deleteByPrimaryKey(long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(SorStorage record);
 
 
 
-    SorStorage selectByPrimaryKey(Short id);
+    SorStorage selectByPrimaryKey(Integer id);
 
    int updateByPrimaryKeySelective(SorStorage record);
 
 
 
-      List<SorStorage> selectByPrimaryKeyLike(int start, int end, long id, Date acceptdate);
+      List<SorStorage> selectByPrimaryKeyLike(int start, int end, Integer id, Date acceptdate);
 
-      public int selectCount(Long id, Date acceptdate);
+      public int selectCount(Integer id, Date acceptdate);
 
 
 }

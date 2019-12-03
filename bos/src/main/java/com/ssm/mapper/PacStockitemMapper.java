@@ -3,6 +3,7 @@ package com.ssm.mapper;
 import com.ssm.model.PacStockitem;
 
 public interface PacStockitemMapper {
+
     int deleteByPrimaryKey(Short id);
 
     int insert(PacStockitem record);

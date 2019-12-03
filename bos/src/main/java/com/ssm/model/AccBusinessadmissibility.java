@@ -1,11 +1,16 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class AccBusinessadmissibility {
-    private Short id;
+    private Integer id;
 
     private String businessnoticeno;
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 
     private Date reservationtime;
 
@@ -49,11 +54,51 @@ public class AccBusinessadmissibility {
 
     private Short actualpacking;
 
-    public Short getId() {
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    private String product;
+
+    @Override
+    public String toString() {
+        return "AccBusinessadmissibility{" +
+                "id=" + id +
+                ", businessnoticeno='" + businessnoticeno + '\'' +
+                ", reservationtime=" + reservationtime +
+                ", customname='" + customname + '\'' +
+                ", pickupaddress='" + pickupaddress + '\'' +
+                ", customcode='" + customcode + '\'' +
+                ", linkman='" + linkman + '\'' +
+                ", telphone='" + telphone + '\'' +
+                ", weight=" + weight +
+                ", volume=" + volume +
+                ", importanthints='" + importanthints + '\'' +
+                ", arrivecity='" + arrivecity + '\'' +
+                ", pickerinfo=" + pickerinfo +
+                ", sendaddress='" + sendaddress + '\'' +
+                ", processingunit=" + processingunit +
+                ", notificationsource=" + notificationsource +
+                ", customnomodifyflag=" + customnomodifyflag +
+                ", singletype='" + singletype + '\'' +
+                ", packagesnum=" + packagesnum +
+                ", actualweight=" + actualweight +
+                ", billingweight=" + billingweight +
+                ", packingfee=" + packingfee +
+                ", actualpacking=" + actualpacking +
+                ", product='" + product + '\'' +
+                '}';
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

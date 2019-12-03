@@ -24,7 +24,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public int deleteByPrimaryKey(long id) {
+    public int deleteByPrimaryKey(Integer id) {
         return mapper.deleteByPrimaryKey(id);
     }
 
@@ -34,7 +34,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public SorStorage selectByPrimaryKey(Short id) {
+    public SorStorage selectByPrimaryKey(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
 
@@ -45,12 +45,12 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public List<SorStorage> selectByPrimaryKeyLike(int start, int end, long id, Date acceptdate) {
+    public List<SorStorage> selectByPrimaryKeyLike(int start, int end, Integer id, Date acceptdate) {
         return mapper.selectByPrimaryKeyLike(start,end,id,acceptdate);
     }
 
     @Override
-    public int selectCount(Long id, Date acceptdate) {
+    public int selectCount(Integer id, Date acceptdate) {
         return mapper.selectCount(id,acceptdate);
     }
 }

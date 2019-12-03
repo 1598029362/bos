@@ -5,9 +5,39 @@ import java.util.Date;
 public class PacStock {
     private Short id;
 
+    public PacStock() {
+    }
+
+    public PacStock(Short id, String warehouseno, Integer reservoirtype, String transport, String subordinateunit, Short drawerno, String drawername, Date drawertime, String remark) {
+        this.id = id;
+        this.warehouseno = warehouseno;
+        this.reservoirtype = reservoirtype;
+        this.transport = transport;
+        this.subordinateunit = subordinateunit;
+        this.drawerno = drawerno;
+        this.drawername = drawername;
+        this.drawertime = drawertime;
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return "PacStock{" +
+                "id=" + id +
+                ", warehouseno='" + warehouseno + '\'' +
+                ", reservoirtype=" + reservoirtype +
+                ", transport='" + transport + '\'' +
+                ", subordinateunit='" + subordinateunit + '\'' +
+                ", drawerno=" + drawerno +
+                ", drawername='" + drawername + '\'' +
+                ", drawertime=" + drawertime +
+                ", remark='" + remark + '\'' +
+                '}';
+    }
+
     private String warehouseno;
 
-    private Short reservoirtype;
+    private Integer reservoirtype;
 
     private String transport;
 
@@ -37,11 +67,11 @@ public class PacStock {
         this.warehouseno = warehouseno == null ? null : warehouseno.trim();
     }
 
-    public Short getReservoirtype() {
+    public Integer getReservoirtype() {
         return reservoirtype;
     }
 
-    public void setReservoirtype(Short reservoirtype) {
+    public void setReservoirtype(Integer reservoirtype) {
         this.reservoirtype = reservoirtype;
     }
 
