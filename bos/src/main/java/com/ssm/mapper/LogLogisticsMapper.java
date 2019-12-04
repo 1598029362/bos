@@ -3,6 +3,7 @@ package com.ssm.mapper;
 import com.ssm.model.LogLogistics;
 
 public interface LogLogisticsMapper {
+    //物流管理
     int deleteByPrimaryKey(Short id);
 
     int insert(LogLogistics record);

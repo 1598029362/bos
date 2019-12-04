@@ -26,7 +26,7 @@ public class PacStock {
     public PacStock() {
     }
 
-    public PacStock(Short id, String warehouseno, Integer reservoirtype, String transport, String subordinateunit, Short drawerno, String drawername, Date drawertime, String remark) {
+    public PacStock(Integer id, String warehouseno, Integer reservoirtype, String transport, String subordinateunit, Integer drawerno, String drawername, Date drawertime, String remark) {
         this.id = id;
         this.warehouseno = warehouseno;
         this.reservoirtype = reservoirtype;
@@ -38,20 +38,6 @@ public class PacStock {
         this.remark = remark;
     }
 
-    @Override
-    public String toString() {
-        return "PacStock{" +
-                "id=" + id +
-                ", warehouseno='" + warehouseno + '\'' +
-                ", reservoirtype=" + reservoirtype +
-                ", transport='" + transport + '\'' +
-                ", subordinateunit='" + subordinateunit + '\'' +
-                ", drawerno=" + drawerno +
-                ", drawername='" + drawername + '\'' +
-                ", drawertime=" + drawertime +
-                ", remark='" + remark + '\'' +
-                '}';
-    }
 
     private String warehouseno;
 
