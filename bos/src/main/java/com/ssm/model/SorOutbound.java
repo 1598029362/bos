@@ -3,7 +3,7 @@ package com.ssm.model;
 import java.util.Date;
 
 public class SorOutbound {
-    private Short id;
+    private Integer id;
 
     private Short handovertype;
 
@@ -25,11 +25,11 @@ public class SorOutbound {
 
     private Date enterdate;
 
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -3,23 +3,42 @@ package com.ssm.model;
 public class PacStockitem {
     private Short id;
 
+    //入库单号
     private String warehouseno;
 
+    //货物编码
     private String goodscode;
 
+    //货物名称
     private String goodsname;
 
+    //入库数量
     private Short storagenum;
 
+    //实际数量
     private Short actualnum;
 
+    //计划价格
     private Short plannedprice;
 
+    //规格
     private String specifications;
 
+    //类型
     private Short type;
 
+    //状态
     private Short status;
+
+    private PacStock pacStock;
+
+    public PacStock getPacStock() {
+        return pacStock;
+    }
+
+    public void setPacStock(PacStock pacStock) {
+        this.pacStock = pacStock;
+    }
 
     public Short getId() {
         return id;

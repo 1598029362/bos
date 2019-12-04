@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class BiglogLogisticscontroltable {
@@ -16,7 +19,8 @@ public class BiglogLogisticscontroltable {
     private String remarks;
 
     private Short inputperson;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date inputdate;
 
     private Short inputcompany;
@@ -76,11 +80,11 @@ public class BiglogLogisticscontroltable {
     public void setInputperson(Short inputperson) {
         this.inputperson = inputperson;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getInputdate() {
         return inputdate;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setInputdate(Date inputdate) {
         this.inputdate = inputdate;
     }
