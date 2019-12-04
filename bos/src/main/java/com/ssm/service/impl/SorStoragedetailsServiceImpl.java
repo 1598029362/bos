@@ -38,8 +38,8 @@ public class SorStoragedetailsServiceImpl implements SorStoragedetailsService {
     }
 
     @Override
-    public List<SorStoragedetails> selectSorStoragedetailsById(String packageid) {
-        return mapper.selectSorStoragedetailsById(packageid);
+    public List<SorStoragedetails> selectSorStoragedetailsById(Integer contractnumber) {
+        return mapper.selectSorStoragedetailsById(contractnumber);
     }
 
 

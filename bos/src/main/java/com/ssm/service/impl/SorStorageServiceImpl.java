@@ -5,6 +5,7 @@ import com.ssm.model.SorStorage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public int deleteByPrimaryKey(long id) {
+    public int deleteByPrimaryKey(Integer id) {
         return mapper.deleteByPrimaryKey(id);
     }
 
@@ -33,7 +34,7 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     }
 
     @Override
-    public SorStorage selectByPrimaryKey(Short id) {
+    public SorStorage selectByPrimaryKey(Integer id) {
         return mapper.selectByPrimaryKey(id);
     }
 
@@ -41,5 +42,15 @@ public class SorStorageServiceImpl implements com.ssm.service.SorStorageService 
     public int updateByPrimaryKeySelective(SorStorage record) {
         System.out.println(record);
         return mapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public List<SorStorage> selectByPrimaryKeyLike(int start, int end, Integer id, Date acceptdate) {
+        return mapper.selectByPrimaryKeyLike(start,end,id,acceptdate);
+    }
+
+    @Override
+    public int selectCount(Integer id, Date acceptdate) {
+        return mapper.selectCount(id,acceptdate);
     }
 }

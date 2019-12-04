@@ -15,10 +15,10 @@ public interface SorAbnormalMapper {
     @Delete("delete from SOR_Abnormal where ID=#{id}")
     int deleteByPrimaryKey(Short id);
 
-    @Insert("insert into SOR_Abnormal values(#{id},#{launchdate},#{launchperson},#{launchcompany},#{abnormaltype},#{transferint},#{cargoint},#{packageint},#{hedgeabnint},#{abostate})")
+    @Insert("insert into SOR_Abnormal values(SOR_Abnormal_id.Nextval,#{launchdate},#{launchperson},#{launchcompany},#{abnormaltype},#{transferint},#{cargoint},#{packageint},#{hedgeabnint},#{abostate},#{handledate})")
     int insert(SorAbnormal record);
 
-    @Update("update  SOR_Abnormal set launchdate=#{launchdate},launchperson=#{launchperson},launchcompany=#{launchcompany},abnormaltype=#{abnormaltype},transferint=#{transferint},cargoint=#{cargoint},packageint=#{packageint},hedgeabnint=#{hedgeabnint},abostate=#{abostate} where ID=#{id}")
+    @Update("update  SOR_Abnormal set launchdate=#{launchdate},launchperson=#{launchperson},launchcompany=#{launchcompany},abnormaltype=#{abnormaltype},transferint=#{transferint},cargoint=#{cargoint},packageint=#{packageint},hedgeabnint=#{hedgeabnint},abostate=#{abostate},handledate=#{handledate} where ID=#{id}")
     int updateByPrimaryKey(SorAbnormal record);
 
     @Select("select * from SOR_Abnormal")

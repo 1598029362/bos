@@ -1,9 +1,30 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class AccWorkorder {
     private Short id;
+
+    @Override
+    public String toString() {
+        return "AccWorkorder{" +
+                "id=" + id +
+                ", businessnoticeno='" + businessnoticeno + '\'' +
+                ", jobno='" + jobno + '\'' +
+                ", jobtype=" + jobtype +
+                ", pickupstatus=" + pickupstatus +
+                ", shortmessageint=" + shortmessageint +
+                ", workgenerationtime=" + workgenerationtime +
+                ", aftersinglenum=" + aftersinglenum +
+                ", smallmembernum=" + smallmembernum +
+                ", pickupunit=" + pickupunit +
+                ", pickuptime=" + pickuptime +
+                ", sortingcode='" + sortingcode + '\'' +
+                '}';
+    }
 
     private String businessnoticeno;
 
@@ -14,7 +35,8 @@ public class AccWorkorder {
     private Short pickupstatus;
 
     private Short shortmessageint;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date workgenerationtime;
 
     private Short aftersinglenum;
@@ -22,7 +44,8 @@ public class AccWorkorder {
     private Short smallmembernum;
 
     private Short pickupunit;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date pickuptime;
 
     private String sortingcode;

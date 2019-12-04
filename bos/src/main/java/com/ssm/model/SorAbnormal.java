@@ -1,10 +1,33 @@
 package com.ssm.model;
 
+import javax.persistence.Column;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SorAbnormal {
+    @Override
+    public String toString() {
+        return "SorAbnormal{" +
+                "id=" + id +
+                ", launchdate=" + launchdate +
+                ", launchperson='" + launchperson + '\'' +
+                ", launchcompany='" + launchcompany + '\'' +
+                ", abnormaltype=" + abnormaltype +
+                ", transferint='" + transferint + '\'' +
+                ", cargoint='" + cargoint + '\'' +
+                ", packageint='" + packageint + '\'' +
+                ", hedgeabnint=" + hedgeabnint +
+                ", abostate=" + abostate +
+                ", handledate=" + handledate +
+                '}';
+    }
+
     private Short id;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date launchdate;
 
     private String launchperson;
@@ -23,6 +46,8 @@ public class SorAbnormal {
 
     private Short abostate;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date handledate;
 
     public Short getId() {
@@ -33,10 +58,11 @@ public class SorAbnormal {
         this.id = id;
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getLaunchdate() {
         return launchdate;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setLaunchdate(Date launchdate) {
         this.launchdate = launchdate;
     }
@@ -105,10 +131,11 @@ public class SorAbnormal {
         this.abostate = abostate;
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getHandledate() {
         return handledate;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setHandledate(Date handledate) {
         this.handledate = handledate;
     }

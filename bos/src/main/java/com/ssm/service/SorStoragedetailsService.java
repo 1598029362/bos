@@ -24,7 +24,7 @@ public interface SorStoragedetailsService {
 
     int deleteByLike(String packageid);
 
-    List<SorStoragedetails> selectSorStoragedetailsById(String packageid);
+    List<SorStoragedetails> selectSorStoragedetailsById(Integer contractnumber);
 
 
 

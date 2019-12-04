@@ -1,6 +1,16 @@
 package com.ssm.model;
 
 public class SorStoragedetails {
+    private  Integer contractnumber;
+
+    public Integer getContractnumber() {
+        return contractnumber;
+    }
+
+    public void setContractnumber(Integer contractnumber) {
+        this.contractnumber = contractnumber;
+    }
+
     private  String states;
 
     public String getStates() {
@@ -22,7 +32,9 @@ public class SorStoragedetails {
     @Override
     public String toString() {
         return "SorStoragedetails{" +
-                "id=" + id +
+                "contractnumber=" + contractnumber +
+                ", states='" + states + '\'' +
+                ", id=" + id +
                 ", packageid='" + packageid + '\'' +
                 ", weight=" + weight +
                 ", outboundid='" + outboundid + '\'' +

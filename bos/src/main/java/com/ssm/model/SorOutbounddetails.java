@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class SorOutbounddetails {
@@ -11,6 +14,8 @@ public class SorOutbounddetails {
 
     private Short volume;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date scandate;
 
     private Short isscan;
@@ -51,10 +56,12 @@ public class SorOutbounddetails {
         this.volume = volume;
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getScandate() {
         return scandate;
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setScandate(Date scandate) {
         this.scandate = scandate;
     }
