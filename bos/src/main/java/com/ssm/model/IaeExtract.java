@@ -1,8 +1,13 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class IaeExtract {
+
+
     private String id;
 
     private String vehicleint;
@@ -11,6 +16,8 @@ public class IaeExtract {
 
     private String waybillid;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date estimatedate;
 
     private Short cargon;
@@ -48,11 +55,11 @@ public class IaeExtract {
     public void setWaybillid(String waybillid) {
         this.waybillid = waybillid == null ? null : waybillid.trim();
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getEstimatedate() {
         return estimatedate;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setEstimatedate(Date estimatedate) {
         this.estimatedate = estimatedate;
     }

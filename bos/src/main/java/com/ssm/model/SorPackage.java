@@ -3,9 +3,9 @@ package com.ssm.model;
 import java.util.Date;
 
 public class SorPackage {
-    private Short id;
+    private Integer id;
 
-    private Short packageperson;
+    private Integer packageperson;
 
     private String sealint;
 
@@ -15,31 +15,31 @@ public class SorPackage {
 
     private Date timelimit;
 
-    private Short ticketsum;
+    private Integer ticketsum;
 
-    private Short cargosum;
+    private Integer cargosum;
 
-    private Short weightsum;
+    private Integer weightsum;
 
-    private Short volumesum;
+    private Integer volumesum;
 
-    private Short state;
+    private Integer state;
 
-    private Short ask;
+    private Integer ask;
 
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Short getPackageperson() {
+    public Integer getPackageperson() {
         return packageperson;
     }
 
-    public void setPackageperson(Short packageperson) {
+    public void setPackageperson(Integer packageperson) {
         this.packageperson = packageperson;
     }
 
@@ -75,51 +75,51 @@ public class SorPackage {
         this.timelimit = timelimit;
     }
 
-    public Short getTicketsum() {
+    public Integer getTicketsum() {
         return ticketsum;
     }
 
-    public void setTicketsum(Short ticketsum) {
+    public void setTicketsum(Integer ticketsum) {
         this.ticketsum = ticketsum;
     }
 
-    public Short getCargosum() {
+    public Integer getCargosum() {
         return cargosum;
     }
 
-    public void setCargosum(Short cargosum) {
+    public void setCargosum(Integer cargosum) {
         this.cargosum = cargosum;
     }
 
-    public Short getWeightsum() {
+    public Integer getWeightsum() {
         return weightsum;
     }
 
-    public void setWeightsum(Short weightsum) {
+    public void setWeightsum(Integer weightsum) {
         this.weightsum = weightsum;
     }
 
-    public Short getVolumesum() {
+    public Integer getVolumesum() {
         return volumesum;
     }
 
-    public void setVolumesum(Short volumesum) {
+    public void setVolumesum(Integer volumesum) {
         this.volumesum = volumesum;
     }
 
-    public Short getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(Short state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
-    public Short getAsk() {
+    public Integer getAsk() {
         return ask;
     }
 
-    public void setAsk(Short ask) {
+    public void setAsk(Integer ask) {
         this.ask = ask;
     }
 }

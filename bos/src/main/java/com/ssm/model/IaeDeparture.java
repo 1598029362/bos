@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class IaeDeparture {
@@ -22,7 +25,8 @@ public class IaeDeparture {
     private Short volume;
 
     private Short actualvolume;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date timelimit;
 
     private String ask;
@@ -35,6 +39,8 @@ public class IaeDeparture {
 
     private String importanthints;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date surplustime;
 
     private String entrustcompany;
@@ -119,10 +125,12 @@ public class IaeDeparture {
         this.actualvolume = actualvolume;
     }
 
+
+   // @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getTimelimit() {
         return timelimit;
     }
-
+   // @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setTimelimit(Date timelimit) {
         this.timelimit = timelimit;
     }
@@ -166,11 +174,11 @@ public class IaeDeparture {
     public void setImportanthints(String importanthints) {
         this.importanthints = importanthints == null ? null : importanthints.trim();
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getSurplustime() {
         return surplustime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setSurplustime(Date surplustime) {
         this.surplustime = surplustime;
     }

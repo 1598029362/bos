@@ -1,11 +1,23 @@
 package com.ssm.model;
 
-public class SyRolesmenus {
+public class SyRolesMenus {
     private Short id;
 
     private Short roleid;
 
     private Short menuid;
+
+    public SyRolesMenus() {
+    }
+
+    public SyRolesMenus( Short menuid) {
+        this.menuid = menuid;
+    }
+
+    public SyRolesMenus(Short roleid, Short menuid) {
+        this.roleid = roleid;
+        this.menuid = menuid;
+    }
 
     public Short getId() {
         return id;

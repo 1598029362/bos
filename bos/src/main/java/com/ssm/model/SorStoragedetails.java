@@ -1,7 +1,27 @@
 package com.ssm.model;
 
 public class SorStoragedetails {
-    private Short id;
+    private  Integer contractnumber;
+
+    public Integer getContractnumber() {
+        return contractnumber;
+    }
+
+    public void setContractnumber(Integer contractnumber) {
+        this.contractnumber = contractnumber;
+    }
+
+    private  String states;
+
+    public String getStates() {
+        return states;
+    }
+
+    public void setStates(String states) {
+        this.states = states;
+    }
+
+    private Integer id;
 
     private String packageid;
 
@@ -9,13 +29,26 @@ public class SorStoragedetails {
 
     private String outboundid;
 
+    @Override
+    public String toString() {
+        return "SorStoragedetails{" +
+                "contractnumber=" + contractnumber +
+                ", states='" + states + '\'' +
+                ", id=" + id +
+                ", packageid='" + packageid + '\'' +
+                ", weight=" + weight +
+                ", outboundid='" + outboundid + '\'' +
+                ", state=" + state +
+                '}';
+    }
+
     private Short state;
 
-    public Short getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

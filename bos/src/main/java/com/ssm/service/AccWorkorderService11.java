@@ -1,15 +1,16 @@
-package com.ssm.mapper;
+package com.ssm.service;
 
 import com.ssm.model.AccWorkorder;
+import org.apache.ibatis.annotations.Select;
 
-public interface AccWorkorderMapper {
+public interface AccWorkorderService11 {
     int deleteByPrimaryKey(Short id);
 
     int insert(AccWorkorder record);
 
     int insertSelective(AccWorkorder record);
 
-    AccWorkorder selectByPrimaryKey(Short id);
+    AccWorkorder selectByPrimaryKey(String businessnoticeno);
 
     int updateByPrimaryKeySelective(AccWorkorder record);
 
