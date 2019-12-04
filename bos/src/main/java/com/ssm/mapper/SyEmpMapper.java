@@ -25,4 +25,11 @@ public interface SyEmpMapper {
 
     @Update("update sy_emp set EmpName=#{EmpName},EmpNo=#{EmpNo},Pwd=#{Pwd},QueryPwd=#{QueryPwd},RoleID=#{RoleID},EmpUnit=#{EmpUnit},Remark=#{Remark},Disabled=#{Disabled} where ID=#{ID}")
     int updateByPrimaryKey(SyEmp record);
+
+    @Select("select * from sy_emp where id=#{id}")
+    public SyEmp selectSyEmp(int id);
+
+    @Select("select * from sy_emp where EmpNo=#{EmpNo} and Pwd=#{Pwd}")
+    List<SyEmp> selectByPrimaryLike(String EmpNo, String Pwd);
+
 }

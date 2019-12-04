@@ -15,4 +15,8 @@ public interface SyEmpService {
     public int selectCount(String name, String disabled);
 
     int updateByPrimaryKey(SyEmp record);
+
+    public SyEmp selectSyEmp(int id);
+
+    List<SyEmp> selectByPrimaryLike(String EmpNo, String Pwd);
 }

@@ -8,24 +8,6 @@ import java.util.Date;
 public class AccWorkorder {
     private Short id;
 
-    @Override
-    public String toString() {
-        return "AccWorkorder{" +
-                "id=" + id +
-                ", businessnoticeno='" + businessnoticeno + '\'' +
-                ", jobno='" + jobno + '\'' +
-                ", jobtype=" + jobtype +
-                ", pickupstatus=" + pickupstatus +
-                ", shortmessageint=" + shortmessageint +
-                ", workgenerationtime=" + workgenerationtime +
-                ", aftersinglenum=" + aftersinglenum +
-                ", smallmembernum=" + smallmembernum +
-                ", pickupunit=" + pickupunit +
-                ", pickuptime=" + pickuptime +
-                ", sortingcode='" + sortingcode + '\'' +
-                '}';
-    }
-
     private String businessnoticeno;
 
     private String jobno;
@@ -34,7 +16,7 @@ public class AccWorkorder {
 
     private Short pickupstatus;
 
-    private Short shortmessageint;
+    private String shortmessageint;
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date workgenerationtime;
@@ -49,6 +31,8 @@ public class AccWorkorder {
     private Date pickuptime;
 
     private String sortingcode;
+
+    private SyEmp syEmp;
 
     public Short getId() {
         return id;
@@ -90,18 +74,18 @@ public class AccWorkorder {
         this.pickupstatus = pickupstatus;
     }
 
-    public Short getShortmessageint() {
+    public String getShortmessageint() {
         return shortmessageint;
     }
 
-    public void setShortmessageint(Short shortmessageint) {
+    public void setShortmessageint(String shortmessageint) {
         this.shortmessageint = shortmessageint;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getWorkgenerationtime() {
         return workgenerationtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setWorkgenerationtime(Date workgenerationtime) {
         this.workgenerationtime = workgenerationtime;
     }
@@ -129,11 +113,11 @@ public class AccWorkorder {
     public void setPickupunit(Short pickupunit) {
         this.pickupunit = pickupunit;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getPickuptime() {
         return pickuptime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setPickuptime(Date pickuptime) {
         this.pickuptime = pickuptime;
     }
@@ -144,5 +128,24 @@ public class AccWorkorder {
 
     public void setSortingcode(String sortingcode) {
         this.sortingcode = sortingcode == null ? null : sortingcode.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "AccWorkorder{" +
+                "id=" + id +
+                ", businessnoticeno='" + businessnoticeno + '\'' +
+                ", jobno='" + jobno + '\'' +
+                ", jobtype=" + jobtype +
+                ", pickupstatus=" + pickupstatus +
+                ", shortmessageint='" + shortmessageint + '\'' +
+                ", workgenerationtime=" + workgenerationtime +
+                ", aftersinglenum=" + aftersinglenum +
+                ", smallmembernum=" + smallmembernum +
+                ", pickupunit=" + pickupunit +
+                ", pickuptime=" + pickuptime +
+                ", sortingcode='" + sortingcode + '\'' +
+                ", syEmp=" + syEmp +
+                '}';
     }
 }

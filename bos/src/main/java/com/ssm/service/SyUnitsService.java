@@ -19,5 +19,8 @@ public interface SyUnitsService {
 
     List<SyUnits> selectUnits();
 
+     SyUnits selectSyUnits(int operatorid);
+
+    SyUnits selectSyUnitsAddress(String addresss);
 
 }

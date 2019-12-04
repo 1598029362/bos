@@ -14,7 +14,7 @@ public interface SyUnitsMapper {
     @Delete("delete from sy_units where id=#{id}")
     int deleteByPrimaryKey(Short id);
 
-    @Insert("insert into sy_units(id,name,remarks) values(sy_units_id.Nextval,#{name},#{remarks})")
+    @Insert("insert into sy_units(id,name,remarks,address) values(sy_units_id.Nextval,#{name},#{remarks},#{address})")
     int insert(SyUnits record);
 
 
@@ -24,10 +24,16 @@ public interface SyUnitsMapper {
     @Select("select count(*) from sy_units where name like #{name}")
     public int selectCount(String name);
 
-    @Update("update sy_units set name=#{name},remarks=#{remarks} where id=#{id}")
+    @Update("update sy_units set name=#{name},remarks=#{address},address=#{address} where id=#{id}")
     int updateByPrimaryKey(SyUnits record);
 
     @Select("select * from sy_units")
     List<SyUnits> selectUnits();
+
+    @Select("select * from sy_units where id=#{id}")
+     SyUnits selectSyUnits(int id);
+
+    @Select("select * from sy_units where address=#{address}")
+    SyUnits selectSyUnitsAddress(String address);
 
 }

@@ -1,14 +1,19 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class DisPropagandatask {
     private Short id;
 
     private String outline;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date releasetime;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date failuretime;
 
     private Short status;
@@ -30,19 +35,19 @@ public class DisPropagandatask {
     public void setOutline(String outline) {
         this.outline = outline == null ? null : outline.trim();
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getReleasetime() {
         return releasetime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setReleasetime(Date releasetime) {
         this.releasetime = releasetime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getFailuretime() {
         return failuretime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setFailuretime(Date failuretime) {
         this.failuretime = failuretime;
     }

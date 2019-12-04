@@ -18,6 +18,17 @@ public class SyUnits {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date operationtime;
 
+    private String address;
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public Short getId() {
         return id;
     }

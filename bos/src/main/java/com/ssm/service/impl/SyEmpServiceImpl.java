@@ -37,4 +37,14 @@ public class SyEmpServiceImpl implements SyEmpService {
     public int updateByPrimaryKey(SyEmp record) {
         return syEmpMapper.updateByPrimaryKey(record);
     }
+
+    @Override
+    public SyEmp selectSyEmp(int id) {
+        return syEmpMapper.selectSyEmp(id);
+    }
+
+    @Override
+    public List<SyEmp> selectByPrimaryLike(String EmpNo, String Pwd) {
+        return syEmpMapper.selectByPrimaryLike(EmpNo, Pwd);
+    }
 }

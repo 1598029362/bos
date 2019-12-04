@@ -19,6 +19,12 @@ public class BasPartition {
 
     private Short sdint;
 
+    public BasPartition(String province, String city, String county) {
+        this.province = province;
+        this.city = city;
+        this.county = county;
+    }
+
     public Short getId() {
         return id;
     }

@@ -11,7 +11,7 @@ public interface SyMenusService {
 
     //查询模块的根目录
     public List<SyMenus> findAllModule();
-    public List<SyMenus> findChildModule(int pid);
+    public List<SyMenus> findChildModule(int parentid, int roleid);
 
     List<SyMenus> selectByPrimaryKeyLike(int start, int end, String text);
 

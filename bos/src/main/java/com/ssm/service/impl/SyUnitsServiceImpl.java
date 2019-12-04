@@ -42,4 +42,14 @@ public class SyUnitsServiceImpl implements SyUnitsService {
     public List<SyUnits> selectUnits() {
         return syUnitsMapper.selectUnits();
     }
+
+    @Override
+    public SyUnits selectSyUnits(int operatorid) {
+        return syUnitsMapper.selectSyUnits(operatorid);
+    }
+
+    @Override
+    public SyUnits selectSyUnitsAddress(String addresss) {
+        return syUnitsMapper.selectSyUnitsAddress(addresss);
+    }
 }

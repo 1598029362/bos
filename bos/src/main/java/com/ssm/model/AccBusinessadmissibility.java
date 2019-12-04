@@ -6,12 +6,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.util.Date;
 
 public class AccBusinessadmissibility {
-    private Integer id;
+    private Short id;
+    //统计
+    private Short max;
 
     private String businessnoticeno;
+
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
-
     private Date reservationtime;
 
     private String customname;
@@ -54,20 +56,79 @@ public class AccBusinessadmissibility {
 
     private Short actualpacking;
 
-    public String getProduct() {
-        return product;
-    }
-
-    public void setProduct(String product) {
-        this.product = product;
-    }
-
     private String product;
+
+    private BasZonecustominfo1 basZonecustominfo;
+
+    private AccWorkorder accWorkorder;
+
+    private String worksheetno;
+
+    private BasAssociatemember basAssociatemember;
+
+    //寄件人
+    private String man;
+
+    private SyUnits syUnits2;
+    //收件人
+    private  String person;
+
+    private SyUnits syUnits;
+
+
+    public SyUnits getSyUnits2() {
+        return syUnits2;
+    }
+
+    public void setSyUnits2(SyUnits syUnits2) {
+        this.syUnits2 = syUnits2;
+    }
+
+    public SyUnits getSyUnits() {
+        return syUnits;
+    }
+
+    public void setSyUnits(SyUnits syUnits) {
+        this.syUnits = syUnits;
+    }
+
+    public String getMan() {
+        return man;
+    }
+
+    public void setMan(String man) {
+        this.man = man;
+    }
+
+    public String getPerson() {
+        return person;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
+
+    public BasAssociatemember getBasAssociatemember() {
+        return basAssociatemember;
+    }
+
+    public void setBasAssociatemember(BasAssociatemember basAssociatemember) {
+        this.basAssociatemember = basAssociatemember;
+    }
+
+    public String getWorksheetno() {
+        return worksheetno;
+    }
+
+    public void setWorksheetno(String worksheetno) {
+        this.worksheetno = worksheetno;
+    }
 
     @Override
     public String toString() {
         return "AccBusinessadmissibility{" +
                 "id=" + id +
+                ", max=" + max +
                 ", businessnoticeno='" + businessnoticeno + '\'' +
                 ", reservationtime=" + reservationtime +
                 ", customname='" + customname + '\'' +
@@ -91,14 +152,44 @@ public class AccBusinessadmissibility {
                 ", packingfee=" + packingfee +
                 ", actualpacking=" + actualpacking +
                 ", product='" + product + '\'' +
+                ", basZonecustominfo=" + basZonecustominfo +
+                ", accWorkorder=" + accWorkorder +
+                ", worksheetno='" + worksheetno + '\'' +
+                ", basAssociatemember=" + basAssociatemember +
+                ", man='" + man + '\'' +
+                ", person='" + person + '\'' +
                 '}';
     }
 
-    public Integer getId() {
+    public String getProduct() {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public AccWorkorder getAccWorkorder() {
+        return accWorkorder;
+    }
+
+    public void setAccWorkorder(AccWorkorder accWorkorder) {
+        this.accWorkorder = accWorkorder;
+    }
+
+    public BasZonecustominfo1 getBasZonecustominfo() {
+        return basZonecustominfo;
+    }
+
+    public void setBasZonecustominfo(BasZonecustominfo1 basZonecustominfo) {
+        this.basZonecustominfo = basZonecustominfo;
+    }
+
+    public Short getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Short id) {
         this.id = id;
     }
 
@@ -110,10 +201,11 @@ public class AccBusinessadmissibility {
         this.businessnoticeno = businessnoticeno == null ? null : businessnoticeno.trim();
     }
 
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getReservationtime() {
         return reservationtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setReservationtime(Date reservationtime) {
         this.reservationtime = reservationtime;
     }
@@ -156,6 +248,14 @@ public class AccBusinessadmissibility {
 
     public void setTelphone(String telphone) {
         this.telphone = telphone == null ? null : telphone.trim();
+    }
+
+    public Short getMax() {
+        return max;
+    }
+
+    public void setMax(Short max) {
+        this.max = max;
     }
 
     public Short getWeight() {

@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class DisWorkordersign {
@@ -20,7 +23,8 @@ public class DisWorkordersign {
     private String recipient;
 
     private Short signunit;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date signtime;
 
     private Short invalidatemark;
@@ -33,6 +37,29 @@ public class DisWorkordersign {
 
     private Short inputid;
 
+    private String inputname;
+
+    private SyUnits syUnits;
+
+    public SyUnits getSyUnits() {
+        return syUnits;
+    }
+
+    public void setSyUnits(SyUnits syUnits) {
+        this.syUnits = syUnits;
+    }
+
+
+    public String getInputname() {
+        return inputname;
+    }
+
+    public void setInputname(String inputname) {
+        this.inputname = inputname;
+    }
+
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date inputtime;
 
     public Short getId() {
@@ -106,11 +133,11 @@ public class DisWorkordersign {
     public void setSignunit(Short signunit) {
         this.signunit = signunit;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getSigntime() {
         return signtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setSigntime(Date signtime) {
         this.signtime = signtime;
     }
@@ -154,11 +181,11 @@ public class DisWorkordersign {
     public void setInputid(Short inputid) {
         this.inputid = inputid;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getInputtime() {
         return inputtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setInputtime(Date inputtime) {
         this.inputtime = inputtime;
     }

@@ -29,8 +29,8 @@ public class SyMenusServiceImpl implements SyMenusService {
     }
 
     @Override
-    public List<SyMenus> findChildModule(int pid) {
-        return syMenusMapper.findChildModule(pid);
+    public List<SyMenus> findChildModule(int parentid,int roleid) {
+        return syMenusMapper.findChildModule(parentid,roleid);
     }
 
     @Override

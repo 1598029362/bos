@@ -1,5 +1,8 @@
 package com.ssm.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class RetReturnlist {
@@ -14,7 +17,8 @@ public class RetReturnlist {
     private String apremark;
 
     private Short aploss;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date entrytime;
 
     private Short receivegunit;
@@ -22,13 +26,15 @@ public class RetReturnlist {
     private Short invalidatesign;
 
     private Short returnunit;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date recordingtime;
 
     private Short entryunit;
 
     private String personname;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date confirmationtime;
 
     private Short confirmationunit;
@@ -44,6 +50,16 @@ public class RetReturnlist {
     private String handlingopinions;
 
     private String denialtype;
+
+    private SyEmp syEmp;
+
+    public SyEmp getSyEmp() {
+        return syEmp;
+    }
+
+    public void setSyEmp(SyEmp syEmp) {
+        this.syEmp = syEmp;
+    }
 
     public Short getId() {
         return id;
@@ -92,11 +108,11 @@ public class RetReturnlist {
     public void setAploss(Short aploss) {
         this.aploss = aploss;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getEntrytime() {
         return entrytime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setEntrytime(Date entrytime) {
         this.entrytime = entrytime;
     }
@@ -108,11 +124,11 @@ public class RetReturnlist {
     public void setReceivegunit(Short receivegunit) {
         this.receivegunit = receivegunit;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Short getInvalidatesign() {
         return invalidatesign;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setInvalidatesign(Short invalidatesign) {
         this.invalidatesign = invalidatesign;
     }
@@ -124,11 +140,11 @@ public class RetReturnlist {
     public void setReturnunit(Short returnunit) {
         this.returnunit = returnunit;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public Date getRecordingtime() {
         return recordingtime;
     }
-
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     public void setRecordingtime(Date recordingtime) {
         this.recordingtime = recordingtime;
     }

@@ -70,4 +70,17 @@ public class AccWorksheet {
     public void setStowagerequirements(String stowagerequirements) {
         this.stowagerequirements = stowagerequirements == null ? null : stowagerequirements.trim();
     }
+
+    @Override
+    public String toString() {
+        return "AccWorksheet{" +
+                "id=" + id +
+                ", worksheetno='" + worksheetno + '\'' +
+                ", destination='" + destination + '\'' +
+                ", producttime='" + producttime + '\'' +
+                ", total=" + total +
+                ", weight=" + weight +
+                ", stowagerequirements='" + stowagerequirements + '\'' +
+                '}';
+    }
 }

@@ -16,6 +16,15 @@ public class SyEmp {
     private Short Disabled;
     private SyRole emp_role;
 
+    private SyUnits syUnits;
+
+    public SyUnits getSyUnits() {
+        return syUnits;
+    }
+
+    public void setSyUnits(SyUnits syUnits) {
+        this.syUnits = syUnits;
+    }
 
     public SyRole getEmp_role() {
         return emp_role;

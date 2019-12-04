@@ -19,12 +19,20 @@ public interface SyMenusMapper {
     int insert(SyMenus record);
 
     //查询模块的根目录
-    @Select("select * from SY_Menus where parentid=-1 " )
+    /*@Select("select * from SY_Menus where parentid=-1 " )
     public List<SyMenus> findAllModule();
 
 
     @Select("select * from SY_Menus where parentid=#{parentid}")
-    public List<SyMenus> findChildModule(int pid);
+    public List<SyMenus> findChildModule(int pid);*/
+
+    //查询模块的根目录
+    @Select("select * from SY_Menus  t INNER JOIN Sy_RolesMenus  u on t.id=u.menuid where parentid=-1 " )
+    public List<SyMenus> findAllModule();
+
+
+    @Select("select * from SY_Menus  t INNER JOIN Sy_RolesMenus  u on t.id=u.menuid where parentid=#{parentid} and roleid=#{roleid} ")
+    public List<SyMenus> findChildModule(int parentid, int roleid);
 
     @Select("select * from (select d.*, ROWNUM ROWNUM_  from (select * from sy_menus) d where ROWNUM <=#{end})where ROWNUM_>#{start}")
     List<SyMenus> selectByPrimaryKey(int start, int end);

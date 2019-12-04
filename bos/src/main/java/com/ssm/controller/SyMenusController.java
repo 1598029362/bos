@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,8 @@ public class SyMenusController {
     //栏目管理
     //分页
     @RequestMapping("selectMenusLike")
-    public Map<Object,Object> selectMenusLike(int page, int rows,String text){
+    public Map<Object,Object> selectMenusLike(int page, int rows, String text, HttpServletRequest request){
+
         Map<Object,Object> map=new HashMap<>();
         map.put("total",syMenusService.selectCount("%"+text+"%"));
         map.put("rows",syMenusService.selectByPrimaryKeyLike((page-1)*rows,page*rows,"%"+text+"%"));
@@ -31,17 +33,19 @@ public class SyMenusController {
 
 
     @RequestMapping("findAllModules")
-    public List<SyMenus> findAllModules(){
+    public List<SyMenus> findAllModules(HttpServletRequest request){
         //调用service中的查询方法
+        Short a= (Short) request.getSession().getAttribute("roleID");
         List<SyMenus> list=syMenusService.findAllModule();//这里查询出来的是根节点
         for (SyMenus module : list) {
-            findChildModule(module.getId(),module);
+            findChildModule(module.getId(),module,a);
         }
         return list;
     }
 
-    public void findChildModule(int pid,SyMenus module){
-        List<SyMenus> list=syMenusService.findChildModule(pid);
+    public void findChildModule(int pid,SyMenus module,int a){
+
+        List<SyMenus> list=syMenusService.findChildModule(pid,a);
         for (SyMenus module1 : list) {
             //继续调用查询的方法
         }

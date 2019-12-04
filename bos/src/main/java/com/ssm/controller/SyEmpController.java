@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +55,32 @@ public class SyEmpController {
         map.put("rows",emps);
         return map;
     }
+    //获取登录信息
+    @RequestMapping("login")
+    public Map<Object,Object> login(SyEmp syEmp, HttpServletRequest request){
+        Map<Object,Object> map=new HashMap<>();
+        Short id = (Short) request.getSession().getAttribute("id");
+        SyEmp emp = syEmpService.selectSyEmp(id);
+        SyUnits units = syUnitsService.selectSyUnits(emp.getEmpUnit());
+        map.put("id",id);
+        map.put("roleID",request.getSession().getAttribute("roleID"));
+        map.put("name",request.getSession().getAttribute("name"));
+        map.put("units",units);
+        return map;
+    }
+    @RequestMapping("sssss")
+    public Map<Object,Object>  ssssss(SyEmp syEmp,HttpServletRequest request){
+        Map<Object,Object> map=new HashMap<>();
+        List<SyEmp> list = syEmpService.selectByPrimaryLike(syEmp.getEmpNo(), syEmp.getPwd());
+        for (SyEmp emp : list) {
+            request.getSession().setAttribute("id",emp.getID());
+            request.getSession().setAttribute("roleID",emp.getRoleID());
+            request.getSession().setAttribute("name",emp.getEmpName());
+        }
+        map.put("size",list.size());
+        return map;
 
+    }
 
     @RequestMapping("updateEmp")
     public void updateEmp(SyEmp syEmp){
@@ -64,7 +90,9 @@ public class SyEmpController {
 
     @RequestMapping("deleteEmp")
     public String deleteEmp(short id){
-        syEmpService.deleteByPrimaryKey(id);
+        System.out.println("sdfghjk");
+        int i = syEmpService.deleteByPrimaryKey(id);
+        System.out.println(i);
         return "index";
     }
 
